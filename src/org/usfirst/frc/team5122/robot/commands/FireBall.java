@@ -11,12 +11,10 @@
 
 package org.usfirst.frc.team5122.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team5122.robot.OI;
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.subsystems.Shooter;
-
 /**
  *
  */
@@ -40,12 +38,8 @@ public class  FireBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!Shooter.intakeOn) {
-    		Robot.shooter.fire();
-    		Timer.delay(.5);
-    		Robot.shooter.intakeOff();
-    		done = true;
-    	}
+    	Robot.shooter.fire();
+    	done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -55,7 +49,9 @@ public class  FireBall extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.intakeOff();
+    	if (!OI.jS1.get()) {
+    		Robot.shooter.intakeOff();
+    	}
     }
 
     // Called when another command which requires one or more of the same

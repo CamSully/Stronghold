@@ -12,9 +12,7 @@
 package org.usfirst.frc.team5122.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.subsystems.Shooter;
 
 /**
  *
@@ -55,4 +53,12 @@ public class  Intake extends Command {
     protected void interrupted() {
     	
     }
+    
+    // Override cancel in Command class (occurs when button is no longer pressed).
+    public void cancel() {
+    	// Call Command.cancel() in case there are important things in it.
+    	super.cancel();
+    	end();
+    }
+    
 }
