@@ -40,7 +40,7 @@ public class Drivetrain extends Subsystem {
     // here. Call these from Commands.
 
     public void jsDrive(Joystick js) {
-    	driveBase.arcadeDrive(js.getRawAxis(1), -js.getRawAxis(0));	//(Forward/Back, Left/Right)
+    	driveBase.arcadeDrive(-js.getRawAxis(1), -js.getRawAxis(0));	//(Forward/Back, Left/Right)
     }
     
     public void drive(double magnitude, double angle) {
