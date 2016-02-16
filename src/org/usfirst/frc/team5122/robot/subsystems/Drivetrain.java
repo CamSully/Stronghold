@@ -34,6 +34,7 @@ public class Drivetrain extends Subsystem {
     
     public Drivetrain() {
     	driveBase = new RobotDrive(leftMotorController1, leftMotorController2, rightMotorController1, rightMotorController2);
+    	driveBase.setSafetyEnabled(false);
     }
     
     // Put methods for controlling this subsystem

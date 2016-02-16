@@ -3,6 +3,7 @@ package org.usfirst.frc.team5122.robot.subsystems;
 import org.usfirst.frc.team5122.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -18,7 +19,12 @@ public class Lift extends Subsystem {
 	
 	public void lifterUp() {
 		if (!topLimit.get()) {
+			SmartDashboard.putBoolean("Lift on Top Limit", false);
 			lifter.set(.3);
+		}
+		
+		else {
+			SmartDashboard.putBoolean("Lift on Top Limit", true);
 		}
 	}
 	
