@@ -54,6 +54,7 @@ public class OI {
     public static JoystickButton jS2;
     public static JoystickButton jS3;
     public static JoystickButton jS4;
+    public static JoystickButton jS5;
     public static Joystick driveJoystick;
     public static Joystick rotateJoystick;
 
@@ -69,7 +70,7 @@ public class OI {
         jS1.whileHeld(new Intake());
         
         jS2 = new JoystickButton(driveJoystick, 1);
-        jS2.whenPressed(new FireBall());
+        jS2.whenPressed(new PushFireBall());
         
         jS3 = new JoystickButton(rotateJoystick, 4);
         jS3.whileHeld(new LiftDown());

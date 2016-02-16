@@ -14,9 +14,12 @@ public class Lift extends Subsystem {
     // here. Call these from Commands.
 	
 	SpeedController lifter = RobotMap.liftLifter;
+	DigitalInput topLimit = RobotMap.liftTopLimit;
 	
 	public void lifterUp() {
-		lifter.set(.3);
+		if (!topLimit.get()) {
+			lifter.set(.3);
+		}
 	}
 	
 	public void lifterDown() {
