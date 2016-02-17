@@ -82,7 +82,7 @@ public class RobotMap {
         LiveWindow.addActuator("Shooter", "rotatorEncoder", rotatorEncoder);
         
     	// Setup encoder.
-        rotatorEncoder.setDistancePerPulse(1);     // 1 pulse == 1 rotation because gear ratio == 1x1
+        rotatorEncoder.setDistancePerPulse(.0027);     // 1 pulse == 1 rotation because gear ratio == 1x1
         rotatorEncoder.setSamplesToAverage(5);     // Averages results of every 5 samples.
         
         // LIFT LIMIT

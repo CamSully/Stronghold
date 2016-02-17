@@ -31,8 +31,8 @@ public class  AutoDriveForward extends Command {
         setTimeout(2.6);
     }
 
-    double speed = -0.75; //Forward
-    double turn = .27; //To account for weird drive pattern on AAssist bot.
+    double speed = 0.75; 
+    double turn = 0; //To account for weird drive pattern on AAssist bot.
     
     // Called just before this Command runs the first time
     protected void initialize() {

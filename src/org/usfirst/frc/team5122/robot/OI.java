@@ -55,6 +55,7 @@ public class OI {
     public static JoystickButton jS3;
     public static JoystickButton jS4;
     public static JoystickButton jS5;
+    public static JoystickButton jS6;
     public static Joystick driveJoystick;
     public static Joystick rotateJoystick;
 
@@ -81,7 +82,11 @@ public class OI {
         // SmartDashboard Buttons
         SmartDashboard.putData("TeleopDrive", new TeleopDrive());
 
-        SmartDashboard.putData("AutoDrive", new AutoDriveForward());
+        SmartDashboard.putData("AutoDriveForward", new AutoDriveForward());
+        
+        SmartDashboard.putData("AutoDriveShoot", new AutoDriveShoot());
+        
+        SmartDashboard.putData("AutoOverObstacle", new AutoOverObstacle());
 
         SmartDashboard.putData("FireBall", new PushFireBall());
 
