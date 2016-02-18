@@ -72,6 +72,8 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Drive and Shoot", new AutoDriveShoot());
         
         SmartDashboard.putData("Auto Chooser", autoChooser);
+        
+        RobotMap.rotatorEncoder.reset();
              
     }
 
@@ -121,6 +123,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Rotate Joystick Speed", OI.rotateJoystick.getRawAxis(1));
         SmartDashboard.putNumber("Left Rotator Speed", shooter.getLeftSpeed());
         SmartDashboard.putNumber("Right Rotator Speed", shooter.getRightSpeed());
+        SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
     }
 
     /**

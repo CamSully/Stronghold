@@ -29,7 +29,7 @@ public class PushFireBall extends CommandGroup {
     	
     	requires(Robot.shooter);
     	
-    	addSequential(new FireBall(1));
+    	addSequential(new FireBall(1.25));
     	addParallel(new FireBall());
     	addParallel(new Push());
     	addSequential(new FireBall(1));

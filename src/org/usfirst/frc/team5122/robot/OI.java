@@ -79,6 +79,9 @@ public class OI {
         jS4 = new JoystickButton(rotateJoystick, 5);
         jS4.whileHeld(new LiftUp());
         
+        jS5 = new JoystickButton(rotateJoystick, 3);
+        jS5.whenPressed(new RotatorToPosition());
+        
         // SmartDashboard Buttons
         SmartDashboard.putData("TeleopDrive", new TeleopDrive());
 
