@@ -18,9 +18,9 @@ import org.usfirst.frc.team5122.robot.Robot;
 /**
  *
  */
-public class  AutoDriveForward extends Command {
+public class  A_DriveToObstacle extends Command {
 
-    public AutoDriveForward() {
+    public A_DriveToObstacle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 

@@ -15,10 +15,13 @@ public class Lift extends Subsystem {
 	
 	SpeedController lifter = RobotMap.liftLifter;
 	DigitalInput topLimit = RobotMap.liftTopLimit;
+	DoubleSolenoid tomahawks = RobotMap.tomahawksSolenoid;
+	
+	boolean tomahawksDown = false;
 	
 	public void lifterUp() {
-		if (!topLimit.get()) {
-			lifter.set(.3);
+		if (topLimit.get()) {     // Limit not pressed.
+			lifter.set(.7);
 		}
 	}
 	
@@ -32,6 +35,23 @@ public class Lift extends Subsystem {
 	
 	public boolean getTopLimit() {
 		return topLimit.get();
+	}
+	
+	public void tomahawksDown() {
+		tomahawks.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void tomahawksUp() {
+		tomahawks.set(DoubleSolenoid.Value.kReverse);
+	}
+	
+	public void toggleTomahawks() {
+		if (tomahawksDown) {
+			tomahawksUp();
+		}
+		else {
+			tomahawksDown();
+		}
 	}
 
     public void initDefaultCommand() {

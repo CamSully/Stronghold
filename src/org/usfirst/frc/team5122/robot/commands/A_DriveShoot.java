@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDriveShoot extends CommandGroup {
+public class A_DriveShoot extends CommandGroup {
     
-    public  AutoDriveShoot() {
+    public  A_DriveShoot() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -30,7 +30,7 @@ public class AutoDriveShoot extends CommandGroup {
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
     	
-    	addSequential(new AutoDriveForward());
-    	addSequential(new FireBall());
+    	addSequential(new A_OverObstacle());
+    	addSequential(new PushFireBall());
     }
 }

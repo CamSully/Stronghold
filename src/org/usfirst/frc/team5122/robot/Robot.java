@@ -67,14 +67,12 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autoChooser = new SendableChooser();
 
-        autoChooser.addObject("Drive to Obstacle", new AutoDriveForward());
-        autoChooser.addObject("Drive over Obstacle", new AutoOverObstacle());
-        autoChooser.addObject("Drive and Shoot", new AutoDriveShoot());
+        autoChooser.addObject("Drive to Obstacle", new A_DriveToObstacle());
+        autoChooser.addObject("Drive over Obstacle", new A_OverObstacle());
+        autoChooser.addObject("Drive over and Shoot", new A_DriveShoot());
         
         SmartDashboard.putData("Auto Chooser", autoChooser);
         
-        RobotMap.rotatorEncoder.reset();
-             
     }
 
     /**
@@ -91,6 +89,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	RobotMap.rotatorEncoder.reset();     // Have people put lift on bottom and reset it for consistency.
+    	
         if (autonomousCommand != null) autonomousCommand.start();
         
         autonomousCommand = (Command) autoChooser.getSelected();

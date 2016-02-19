@@ -82,14 +82,17 @@ public class OI {
         jS5 = new JoystickButton(rotateJoystick, 3);
         jS5.whenPressed(new RotatorToPosition());
         
+        jS6 = new JoystickButton(driveJoystick, 3);
+        jS6.whenPressed(new ToggleTomahawks());
+        
         // SmartDashboard Buttons
         SmartDashboard.putData("TeleopDrive", new TeleopDrive());
 
-        SmartDashboard.putData("AutoDriveForward", new AutoDriveForward());
+        SmartDashboard.putData("AutoDriveForward", new A_DriveToObstacle());
         
-        SmartDashboard.putData("AutoDriveShoot", new AutoDriveShoot());
+        SmartDashboard.putData("AutoDriveShoot", new A_DriveShoot());
         
-        SmartDashboard.putData("AutoOverObstacle", new AutoOverObstacle());
+        SmartDashboard.putData("AutoOverObstacle", new A_OverObstacle());
 
         SmartDashboard.putData("FireBall", new PushFireBall());
 
