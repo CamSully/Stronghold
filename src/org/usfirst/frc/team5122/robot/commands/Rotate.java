@@ -19,6 +19,8 @@ import org.usfirst.frc.team5122.robot.*;
  */
 public class  Rotate extends Command {
 
+	double position;
+	
     public Rotate() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -45,7 +47,8 @@ public class  Rotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stopRotation();
+    	position = RobotMap.rotatorEncoder.getDistance();
+    	Robot.shooter.stopRotation(position);
     }
 
     // Called when another command which requires one or more of the same

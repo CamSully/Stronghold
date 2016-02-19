@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RotatorToPosition extends Command {
 	
 	boolean done;
+	double position;
 	
     public RotatorToPosition() {
         // Use requires() here to declare subsystem dependencies
@@ -20,7 +21,6 @@ public class RotatorToPosition extends Command {
 
     // Called just before this Command runs the every time
     protected void initialize() {
-    	RobotMap.rotatorEncoder.reset();
     	 done = false;
     }
 
@@ -28,6 +28,7 @@ public class RotatorToPosition extends Command {
     protected void execute() {
     	// ROTATOR MUST BE AT BOTTOM FOR THIS TO WORK!
     	if ((RobotMap.rotatorEncoder.getDistance() < 65.5) && ((RobotMap.rotatorEncoder.getDistance() > 73))) {
+    		position = RobotMap.rotatorEncoder.getDistance();
     		done = true;
     	}
     	else {
@@ -42,7 +43,7 @@ public class RotatorToPosition extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stopRotation();
+    	Robot.shooter.stopRotation(position);
     }
 
     // Called when another command which requires one or more of the same

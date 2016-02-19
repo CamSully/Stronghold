@@ -124,6 +124,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Left Rotator Speed", shooter.getLeftSpeed());
         SmartDashboard.putNumber("Right Rotator Speed", shooter.getRightSpeed());
         SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
+        SmartDashboard.putBoolean("Tomahawks Down", lift.getTomahawksDown());
     }
 
     /**

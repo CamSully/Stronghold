@@ -39,10 +39,12 @@ public class Lift extends Subsystem {
 	
 	public void tomahawksDown() {
 		tomahawks.set(DoubleSolenoid.Value.kForward);
+		tomahawksDown = true;
 	}
 	
 	public void tomahawksUp() {
 		tomahawks.set(DoubleSolenoid.Value.kReverse);
+		tomahawksDown = false;
 	}
 	
 	public void toggleTomahawks() {
@@ -52,6 +54,10 @@ public class Lift extends Subsystem {
 		else {
 			tomahawksDown();
 		}
+	}
+	
+	public boolean getTomahawksDown() {
+		return tomahawksDown;
 	}
 
     public void initDefaultCommand() {

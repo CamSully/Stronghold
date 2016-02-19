@@ -46,7 +46,7 @@ public class RobotMap {
     
     public static Encoder rotatorEncoder;
     
-    public static Ultrasonic distanceSensor;
+    // public static Ultrasonic distanceSensor;
     
     public static DoubleSolenoid tomahawksSolenoid;
 
@@ -102,11 +102,12 @@ public class RobotMap {
         // PUSHER
         shooterPusher = new Solenoid(0);
         LiveWindow.addActuator("Shooter", "shooter pusher", shooterPusher);
-                
-        distanceSensor = new Ultrasonic(5, 4);
-        LiveWindow.addActuator("Drivetrain", "Distance Sensor", distanceSensor);
-        distanceSensor.setEnabled(true);
-        distanceSensor.setAutomaticMode(true);
+            
+        // ULTRASONIC CODE DOESN'T WORK- RETURNS 0 OR INFINITE.
+        // distanceSensor = new Ultrasonic(5, 4);
+        // LiveWindow.addActuator("Drivetrain", "Distance Sensor", distanceSensor);
+        // distanceSensor.setEnabled(true);
+        // distanceSensor.setAutomaticMode(true);
         
         tomahawksSolenoid = new DoubleSolenoid(1,2);
         LiveWindow.addActuator("Lift", "Tomahawks", tomahawksSolenoid);

@@ -79,6 +79,8 @@ public class Shooter extends Subsystem {
     	
     	// If rotator is at bottom.
     	if (rotatorBottomLimit.get()) {
+    		rotatorEncoder.reset();
+    		
     		if (js.getRawAxis(1) > 0) {
     			moveRotator(js);
     		}
@@ -92,7 +94,7 @@ public class Shooter extends Subsystem {
     }
     
     private void moveRotator (Joystick js) {
-    	if (js.getRawAxis(1) < -0.1) {     // Going down
+    	if (js.getRawAxis(1) < -0.05) {     // Going down
 			leftRotator.set(0.5*js.getRawAxis(1));
 			leftSpeed = (0.5*js.getRawAxis(1));
 			
@@ -102,7 +104,7 @@ public class Shooter extends Subsystem {
 			jsWasZero = false;
 			
     	}
-    	else if (js.getRawAxis(1) > 0.1) {     // Going up
+    	else if (js.getRawAxis(1) > 0.05) {     // Going up
 			leftRotator.set(0.9*js.getRawAxis(1));
 			leftSpeed = (0.9*js.getRawAxis(1));
 			
@@ -116,11 +118,11 @@ public class Shooter extends Subsystem {
     			position = getDistance();
     		}
     		jsWasZero = true;
-    		stopRotation();
+    		stopRotation(position);
     	}
     }
     
-    public void stopRotation() {
+    public void stopRotation(double finalPosition) {
 
 // SLOWING DOWN CODE- ADD LATER?
 //    	if (rotatorSpeed > 0) {
@@ -136,8 +138,8 @@ public class Shooter extends Subsystem {
     	
 //		ENCODER CODE TO STOP ROTATION AFTER JOYSTICK IS RELEASED.
     	
-    	double tempVal = position + error;
-    	double tempVal2 = position - error;
+    	double tempVal = finalPosition + error;
+    	double tempVal2 = finalPosition - error;
     	
     	if (getDistance() > tempVal) {     // If the rotator moves up.
     		leftRotator.set(-0.3);
@@ -167,6 +169,7 @@ public class Shooter extends Subsystem {
     	}
     }
     
+    // Used for autonomously moving the rotator (see Command RotatorToPosition)
     public void Rotate(double speed) {
     	leftRotator.set(speed);
     	rightRotator.set(-speed);
