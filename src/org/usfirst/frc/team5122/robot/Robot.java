@@ -121,9 +121,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Rotator Encoder Rotations", shooter.getDistance());
         SmartDashboard.putBoolean("Rotator on Bottom Limit", shooter.getBottomLimit());
         SmartDashboard.putNumber("Rotate Joystick Speed", OI.rotateJoystick.getRawAxis(1));
-        SmartDashboard.putNumber("Left Rotator Speed", shooter.getLeftSpeed());
-        SmartDashboard.putNumber("Right Rotator Speed", shooter.getRightSpeed());
-        SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
+        SmartDashboard.putNumber("Rotator Speed", shooter.getSpeed());
+//      SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
         SmartDashboard.putBoolean("Tomahawks Down", lift.getTomahawksDown());
     }
 

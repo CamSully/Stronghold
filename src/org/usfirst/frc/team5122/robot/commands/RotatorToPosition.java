@@ -27,12 +27,11 @@ public class RotatorToPosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// ROTATOR MUST BE AT BOTTOM FOR THIS TO WORK!
-    	if ((RobotMap.rotatorEncoder.getDistance() < 65.5) && ((RobotMap.rotatorEncoder.getDistance() > 73))) {
-    		position = RobotMap.rotatorEncoder.getDistance();
+    	if ((RobotMap.rotatorEncoder.getDistance() > 85) && ((RobotMap.rotatorEncoder.getDistance() < 90))) {
     		done = true;
     	}
     	else {
-    		Robot.shooter.Rotate(0.9);
+    		Robot.shooter.Rotate(1);
     	}
     }
 
@@ -43,7 +42,7 @@ public class RotatorToPosition extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stopRotation(position);
+    	Robot.shooter.stopRotation();
     }
 
     // Called when another command which requires one or more of the same

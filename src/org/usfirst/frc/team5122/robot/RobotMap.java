@@ -28,8 +28,8 @@ public class RobotMap {
     public static SpeedController rightMotorController1;
     public static SpeedController rightMotorController2;
     
-    public static SpeedController shooterLeftRotator;
-    public static SpeedController shooterRightRotator;
+    // public static SpeedController shooterLeftRotator;
+    public static SpeedController shooterRotator;
     
     public static SpeedController shooterLeftShooter;
     public static SpeedController shooterRightShooter;
@@ -70,10 +70,10 @@ public class RobotMap {
         LiveWindow.addActuator("Shooter", "RightShooter", (Talon) shooterRightShooter);
         
         // ROTATORS
-        shooterLeftRotator = new Victor(8);
-        LiveWindow.addActuator("Shooter", "LeftRotator", (Victor) shooterLeftRotator);
-        shooterRightRotator = new Victor(0);
-        LiveWindow.addActuator("Shooter", "RightRotator", (Victor) shooterRightRotator);
+        // shooterLeftRotator = new Victor(8);
+        // LiveWindow.addActuator("Shooter", "LeftRotator", (Victor) shooterLeftRotator);
+        shooterRotator = new Victor(0);
+        LiveWindow.addActuator("Shooter", "RightRotator", (Victor) shooterRotator);
         
         // LIFTER
         liftLifter = new Talon(5);
@@ -90,8 +90,9 @@ public class RobotMap {
         LiveWindow.addActuator("Shooter", "rotatorEncoder", rotatorEncoder);
         
     	// Setup encoder.
-        rotatorEncoder.setDistancePerPulse(1);     // 1 pulse == 1 rotation because gear ratio == 1x1
+        rotatorEncoder.setDistancePerPulse(0.05);     // 1 pulse == 1 rotation because gear ratio == 1x1
         rotatorEncoder.setSamplesToAverage(5);     // Averages results of every 5 samples.
+        rotatorEncoder.setReverseDirection(true);
         
         // LIFT LIMIT
         liftTopLimit = new DigitalInput(1);
@@ -104,12 +105,14 @@ public class RobotMap {
         LiveWindow.addActuator("Shooter", "shooter pusher", shooterPusher);
             
         // ULTRASONIC CODE DOESN'T WORK- RETURNS 0 OR INFINITE.
-        // distanceSensor = new Ultrasonic(5, 4);
+        // distanceSensor = new Ultrasonic(<OUTPUT PORT>, <INPUT PORT>);
         // LiveWindow.addActuator("Drivetrain", "Distance Sensor", distanceSensor);
         // distanceSensor.setEnabled(true);
         // distanceSensor.setAutomaticMode(true);
         
         tomahawksSolenoid = new DoubleSolenoid(1,2);
         LiveWindow.addActuator("Lift", "Tomahawks", tomahawksSolenoid);
+        
+        
     }
 }
