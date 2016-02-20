@@ -81,6 +81,15 @@ public class Shooter extends Subsystem {
     		}
     	}
     	
+		else if (!rotatorTopLimit.get()) {     //Limit is pressed.
+			if (js.getRawAxis(1) < 0) {
+				moveRotator(js);
+			}
+			else {
+				stopRotation();
+			}
+		}
+    	
     	// If rotator is not at the bottom, let it do whatever.
     	else {
         	moveRotator(js);

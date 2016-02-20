@@ -20,6 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5122.robot.commands.*;
+import org.usfirst.frc.team5122.robot.commands.autoComponents.*;
+import org.usfirst.frc.team5122.robot.commands.autoModes.*;
+import org.usfirst.frc.team5122.robot.commands.autoModes.A_Lowbar;
 import org.usfirst.frc.team5122.robot.subsystems.*;
 
 /**
@@ -32,7 +35,7 @@ import org.usfirst.frc.team5122.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
-    SendableChooser autoChooser;
+    SendableChooser autoModeChooser;
 
     NetworkTable table;
     
@@ -65,13 +68,22 @@ public class Robot extends IterativeRobot {
         oi = new OI();
 
         // instantiate the command used for the autonomous period
-        autoChooser = new SendableChooser();
-
-        autoChooser.addObject("Drive to Obstacle", new A_DriveToObstacle());
-        autoChooser.addObject("Drive over Obstacle", new A_OverObstacle());
-        autoChooser.addObject("Drive over and Shoot", new A_DriveShoot());
+        autoModeChooser = new SendableChooser();
+        autoModeChooser.addObject("Cheval Center", new A_Cheval("center"));
+        autoModeChooser.addObject("Cheval Right", new A_Cheval("right"));
+        autoModeChooser.addObject("Cheval Close Left", new A_Cheval("cleft"));
+        autoModeChooser.addObject("Cheval Far Left", new A_Cheval("fleft"));
         
-        SmartDashboard.putData("Auto Chooser", autoChooser);
+        autoModeChooser.addObject("Rough Terrain Center", new A_RoughTerrain("center"));
+        autoModeChooser.addObject("Rough Terrain right", new A_RoughTerrain("right"));
+        autoModeChooser.addObject("Rough Terrain Close Left", new A_RoughTerrain("cleft"));
+        autoModeChooser.addObject("Rough Terrain Far Left", new A_RoughTerrain("fleft"));
+        
+        autoModeChooser.addObject("Low Bar", new A_Lowbar());
+        
+        SmartDashboard.putData("Auto Mode Chooser", autoModeChooser);
+        
+        
         
     }
 
@@ -90,12 +102,10 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	RobotMap.rotatorEncoder.reset();     // Have people put lift on bottom and reset it for consistency.
-    	
-        if (autonomousCommand != null) autonomousCommand.start();
-        
-        autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand = (Command) autoModeChooser.getSelected();
         autonomousCommand.start();
-    }
+        if (autonomousCommand != null) autonomousCommand.start();
+        }
 
     /**
      * This function is called periodically during autonomous
@@ -120,10 +130,11 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Lift on Top Limit", lift.getTopLimit());
         SmartDashboard.putNumber("Rotator Encoder Rotations", shooter.getDistance());
         SmartDashboard.putBoolean("Rotator on Bottom Limit", shooter.getBottomLimit());
-        SmartDashboard.putNumber("Rotate Joystick Speed", OI.rotateJoystick.getRawAxis(1));
         SmartDashboard.putNumber("Rotator Speed", shooter.getSpeed());
 //      SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
         SmartDashboard.putBoolean("Tomahawks Down", lift.getTomahawksDown());
+        SmartDashboard.putNumber("Drivetrain Left Rotations", RobotMap.drivetrainLeftEncoder.getDistance());
+        SmartDashboard.putNumber("Right Motor Rotations", RobotMap.drivetrainRightEncoder.getDistance());
     }
 
     /**

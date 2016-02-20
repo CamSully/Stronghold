@@ -21,12 +21,12 @@ public class Lift extends Subsystem {
 	
 	public void lifterUp() {
 		if (topLimit.get()) {     // Limit not pressed.
-			lifter.set(.7);
+			lifter.set(0.4);
 		}
 	}
 	
 	public void lifterDown() {
-		lifter.set(-.3);
+		lifter.set(-0.4);
 	}
 	
 	public void stopLift() {

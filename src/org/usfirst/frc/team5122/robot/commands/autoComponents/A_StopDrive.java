@@ -1,48 +1,38 @@
-package org.usfirst.frc.team5122.robot.commands;
+package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RotatorToPosition extends Command {
-	
-	boolean done;
-	double position;
-	
-    public RotatorToPosition() {
+public class A_StopDrive extends Command {
+
+    public A_StopDrive(double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires (Robot.shooter);
+    	requires (Robot.drivetrain);
+    	
+    	setTimeout(time);
     }
 
-    // Called just before this Command runs the every time
+    // Called just before this Command runs the first time
     protected void initialize() {
-    	 done = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// ROTATOR MUST BE AT BOTTOM FOR THIS TO WORK!
-    	if ((RobotMap.rotatorEncoder.getDistance() > 85) && ((RobotMap.rotatorEncoder.getDistance() < 90))) {
-    		done = true;
-    	}
-    	else {
-    		Robot.shooter.Rotate(1);
-    	}
+    	Robot.drivetrain.drive(0,0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return done;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stopRotation();
     }
 
     // Called when another command which requires one or more of the same
