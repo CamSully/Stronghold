@@ -58,6 +58,7 @@ public class OI {
     public static JoystickButton jS5;
     public static JoystickButton jS6;
     public static JoystickButton jS7;
+    public static JoystickButton jS8;
     public static Joystick driveJoystick;
     public static Joystick rotateJoystick;
 
@@ -82,13 +83,16 @@ public class OI {
         jS4.whileHeld(new LiftDown());
         
         jS5 = new JoystickButton(rotateJoystick, 3);
-        jS5.whenPressed(new RotatorToRamp());
+        jS5.whenPressed(new RotatorToRamp(false));
         
         jS6 = new JoystickButton(driveJoystick, 3);
         jS6.whenPressed(new ToggleTomahawks());
         
         jS7 = new JoystickButton(rotateJoystick, 2);
-        jS7.whenPressed(new RotatorToLine());
+        jS7.whenPressed(new RotatorToLine(false));
+        
+        jS8 = new JoystickButton(rotateJoystick, 7);
+        jS8.whenPressed(new EmergencyStopRotator());
         
         SmartDashboard.putData("Auto Over Cheval", new A_OverCheval());
         SmartDashboard.putData("Auto Over Rough Terrain", new A_OverRoughTerrain());

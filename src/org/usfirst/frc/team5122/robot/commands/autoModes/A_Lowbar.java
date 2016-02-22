@@ -30,6 +30,7 @@ public class A_Lowbar extends CommandGroup {
     	
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
+    	requires(Robot.lift);
     	
     	// addSequential(new AutoDrive(0.5, 0.5, ))
     }

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5122.robot.commands.autoModes;
 
+import org.usfirst.frc.team5122.robot.Robot;
 import org.usfirst.frc.team5122.robot.commands.autoComponents.A_OverRoughTerrain;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -26,6 +27,9 @@ public class A_RoughTerrain extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	requires(Robot.drivetrain);
+    	requires(Robot.shooter);
+    	requires(Robot.lift);
     	
     	addSequential(new A_OverRoughTerrain());
     	

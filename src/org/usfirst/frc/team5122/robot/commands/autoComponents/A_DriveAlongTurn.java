@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
+import org.usfirst.frc.team5122.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -26,6 +28,7 @@ public class A_DriveAlongTurn extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	requires(Robot.drivetrain);
     	
     	time = spaces * 1.5;
     	

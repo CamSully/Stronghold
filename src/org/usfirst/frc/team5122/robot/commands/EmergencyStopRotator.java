@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5122.robot.commands.autoModes;
+package org.usfirst.frc.team5122.robot.commands;
 
 import org.usfirst.frc.team5122.robot.Robot;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_Cheval extends CommandGroup {
+public class EmergencyStopRotator extends CommandGroup {
     
-    public  A_Cheval(String position) {
+    public  EmergencyStopRotator() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,24 +26,10 @@ public class A_Cheval extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	requires(Robot.drivetrain);
     	requires(Robot.shooter);
-    	requires(Robot.lift);
     	
-    	if (position.equals("center")) {
-    		
-    	}
-    	
-    	else if (position.equals("right")) {
-    		
-    	}
-    	
-    	else if (position.equals("cleft")) {
-    		
-    	}
-    	
-    	else if (position.equals("fleft")) {
-    		
-    	}
+    	addSequential(new RotatorOverObstacle(true));
+    	addSequential(new RotatorToLine(true));
+    	addSequential(new RotatorToRamp(true));
     }
 }

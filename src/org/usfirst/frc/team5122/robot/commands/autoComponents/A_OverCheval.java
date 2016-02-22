@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
+import org.usfirst.frc.team5122.robot.Robot;
 import org.usfirst.frc.team5122.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -26,8 +27,10 @@ public class A_OverCheval extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	requires(Robot.drivetrain);
+    	requires(Robot.lift);
     	
-    	addSequential(new RotatorOverObstacle());
+    	addSequential(new RotatorOverObstacle(false));
     	addSequential(new AutoDrive(0.5, 0, 1));     // Speed, turn, time
     	addSequential(new ToggleTomahawks());
     	addSequential(new AutoDrive(0, 0, 1));

@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RotatorToLine extends Command {
 	
 	boolean done;
+	boolean emergency;
 	
-    public RotatorToLine() {
+    public RotatorToLine(boolean emergency) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires (Robot.shooter);
+    	this.emergency = emergency;
     }
 
     // Called just before this Command runs the every time
@@ -25,14 +27,21 @@ public class RotatorToLine extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if ((RobotMap.rotatorEncoder.getDistance() > 78) && ((RobotMap.rotatorEncoder.getDistance() < 83))) {
-    		Robot.shooter.stopRotation();
+    	
+    	if (emergency) {
+    		done = true;
     	}
-    	else if (RobotMap.rotatorEncoder.getDistance() < 78) {
-    		Robot.shooter.Rotate(1);
-    	}
-    	else {     // If rotator is above threshold (over 83)
-    		Robot.shooter.Rotate(-0.75);
+    	
+    	else {
+    		if ((RobotMap.rotatorEncoder.getDistance() > 78) && ((RobotMap.rotatorEncoder.getDistance() < 83))) {
+    			Robot.shooter.stopRotation();
+    		}
+    		else if (RobotMap.rotatorEncoder.getDistance() < 78) {
+    			Robot.shooter.Rotate(1);
+    		}
+    		else {     // If rotator is above threshold (over 83)
+    			Robot.shooter.Rotate(-0.75);
+    		}
     	}
     }
 
