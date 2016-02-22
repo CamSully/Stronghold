@@ -126,10 +126,25 @@ public class Shooter extends Subsystem {
     
     // Used for autonomously moving the rotator (see Command RotatorToPosition)
     public void Rotate(double velocity) {
-    	Rotator.set(velocity);
-    	speed = velocity;
+    	if (!rotatorTopLimit.get()) {     // Top limit is pressed.
+    		if (velocity < 0) {
+    			Rotator.set(velocity);
+    	    	speed = velocity;
+    		}
+    	}
+    	else if (rotatorBottomLimit.get()) {     // Bottom limit is pressed.
+    		if (velocity > 0) {
+    			Rotator.set(velocity);
+    	    	speed = velocity;
+    		}
+    	}
+    	else {
+    		Rotator.set(velocity);
+	    	speed = velocity;
+    	}
+    	
     }
-    
+        
     // GETTER METHODS FOR SMARTDASHBOARD
     
     public double getSpeed() {

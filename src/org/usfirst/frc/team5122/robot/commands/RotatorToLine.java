@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RotatorToLine extends Command {
 	
 	boolean done;
-	double position;
 	
     public RotatorToLine() {
         // Use requires() here to declare subsystem dependencies
@@ -26,12 +25,14 @@ public class RotatorToLine extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// ROTATOR MUST BE AT BOTTOM FOR THIS TO WORK!
-    	if ((RobotMap.rotatorEncoder.getDistance() > 65) && ((RobotMap.rotatorEncoder.getDistance() < 70))) {
-    		done = true;
+    	if ((RobotMap.rotatorEncoder.getDistance() > 78) && ((RobotMap.rotatorEncoder.getDistance() < 83))) {
+    		Robot.shooter.stopRotation();
     	}
-    	else {
+    	else if (RobotMap.rotatorEncoder.getDistance() < 78) {
     		Robot.shooter.Rotate(1);
+    	}
+    	else {     // If rotator is above threshold (over 83)
+    		Robot.shooter.Rotate(-0.75);
     	}
     }
 

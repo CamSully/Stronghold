@@ -1,45 +1,32 @@
 package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
-import org.usfirst.frc.team5122.robot.Robot;
+import org.usfirst.frc.team5122.robot.commands.*;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class A_UnderLowbar extends Command {
+public class A_UnderLowbar extends CommandGroup {
+    
+    public  A_UnderLowbar() {
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
-    public A_UnderLowbar() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drivetrain);
-    	
-    	setTimeout(3);
-    }
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-	
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.drivetrain.drive(0.75, 0);
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return isTimedOut();
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.drivetrain.stopDrivetrain();
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
+    	addSequential(new RotatorOverObstacle());
+    	addSequential(new AutoDrive(0.5, 0, 2));
     }
 }
