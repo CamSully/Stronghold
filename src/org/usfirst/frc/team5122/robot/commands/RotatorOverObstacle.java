@@ -33,13 +33,13 @@ public class RotatorOverObstacle extends Command {
     	}
     	
     	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() > 15) && ((RobotMap.rotatorEncoder.getDistance() < 20))) {
+    		if ((RobotMap.rotatorEncoder.getDistance() > 20) && ((RobotMap.rotatorEncoder.getDistance() < 25))) {
     			done = true;
     		}
-    		else if (RobotMap.rotatorEncoder.getDistance() < 15) {
+    		else if (RobotMap.rotatorEncoder.getDistance() < 20) {
     			Robot.shooter.Rotate(1);
     		}
-    		else {     // Rotator is above threshold (over 20).
+    		else {     // Rotator is above threshold (over 25).
     			Robot.shooter.Rotate(-0.75);
     		}
     	}
@@ -58,5 +58,6 @@ public class RotatorOverObstacle extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

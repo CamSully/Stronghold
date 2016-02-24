@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_UnderLowbar extends CommandGroup {
+public class A_Over_RoughTerrain extends CommandGroup {
     
-    public  A_UnderLowbar() {
+    public  A_Over_RoughTerrain() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -28,8 +28,9 @@ public class A_UnderLowbar extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	requires(Robot.drivetrain);
+    	requires(Robot.shooter);
     	
     	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.5, 0, 2));
+    	addSequential(new AutoDrive(0.6, 0, 4));
     }
 }

@@ -33,13 +33,13 @@ public class RotatorToLine extends Command {
     	}
     	
     	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() > 78) && ((RobotMap.rotatorEncoder.getDistance() < 83))) {
-    			Robot.shooter.stopRotation();
+    		if ((RobotMap.rotatorEncoder.getDistance() > 60) && ((RobotMap.rotatorEncoder.getDistance() < 65))) {
+    			done = true;
     		}
-    		else if (RobotMap.rotatorEncoder.getDistance() < 78) {
+    		else if (RobotMap.rotatorEncoder.getDistance() < 60) {
     			Robot.shooter.Rotate(1);
     		}
-    		else {     // If rotator is above threshold (over 83)
+    		else {     // If rotator is above threshold (over 65)
     			Robot.shooter.Rotate(-0.75);
     		}
     	}
@@ -58,5 +58,6 @@ public class RotatorToLine extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

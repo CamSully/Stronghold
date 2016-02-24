@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -36,11 +35,23 @@ public class AutoEncoderDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if (RobotMap.drivetrainLeftEncoder.getDistance() > (leftDistance - error) && RobotMap.drivetrainLeftEncoder.getDistance() < (leftDistance + error)) {
-    		if (RobotMap.drivetrainRightEncoder.getDistance() > (rightDistance - error) && RobotMap.drivetrainRightEncoder.getDistance() < (leftDistance + error)) {
+    	if (Robot.drivetrain.getLeftDistance() > (leftDistance - error) && Robot.drivetrain.getLeftDistance() < (leftDistance + error)) {
+    		if (Robot.drivetrain.getRightDistance() > (rightDistance - error) && Robot.drivetrain.getRightDistance() < (rightDistance + error)) {
+        		done = true;
+        	}
+    		else {
+    			Robot.drivetrain.drive(speed, -0.25);
+    		} 
+    	}
+    	else if (Robot.drivetrain.getRightDistance() > (rightDistance - error) && Robot.drivetrain.getRightDistance() < (rightDistance + error)) {
+    		if (Robot.drivetrain.getLeftDistance() > (leftDistance - error) && Robot.drivetrain.getLeftDistance() < (leftDistance + error)) {
     			done = true;
     		}
+    		else {
+    			Robot.drivetrain.drive(speed, 0.25);
+    		}
     	}
+    	
     	else {
     		Robot.drivetrain.drive(speed, angle);
     	}

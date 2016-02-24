@@ -19,8 +19,6 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5122.robot.commands.*;
-import org.usfirst.frc.team5122.robot.commands.autoComponents.*;
 import org.usfirst.frc.team5122.robot.commands.autoModes.*;
 import org.usfirst.frc.team5122.robot.commands.autoModes.A_Lowbar;
 import org.usfirst.frc.team5122.robot.subsystems.*;
@@ -133,8 +131,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Rotator Speed", shooter.getSpeed());
 //      SmartDashboard.putNumber("Distance to Target", drivetrain.getDistance());
         SmartDashboard.putBoolean("Tomahawks Down", lift.getTomahawksDown());
-        SmartDashboard.putNumber("Drivetrain Left Rotations", RobotMap.drivetrainLeftEncoder.getDistance());
-        SmartDashboard.putNumber("Right Motor Rotations", RobotMap.drivetrainRightEncoder.getDistance());
+        SmartDashboard.putNumber("Drivetrain Left Rotations", drivetrain.getLeftDistance());
+        SmartDashboard.putNumber("Right Motor Rotations", drivetrain.getRightDistance());
     }
 
     /**

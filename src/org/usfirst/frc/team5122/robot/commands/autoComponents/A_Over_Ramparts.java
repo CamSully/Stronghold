@@ -1,16 +1,16 @@
-package org.usfirst.frc.team5122.robot.commands.autoModes;
+package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.commands.autoComponents.A_Over_RoughTerrain;
+import org.usfirst.frc.team5122.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class A_RoughTerrain extends CommandGroup {
+public class A_Over_Ramparts extends CommandGroup {
     
-    public  A_RoughTerrain(String position) {
+    public  A_Over_Ramparts() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,25 +29,8 @@ public class A_RoughTerrain extends CommandGroup {
         // arm.
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
-    	requires(Robot.lift);
     	
-    	addSequential(new A_Over_RoughTerrain());
-    	
-    	
-    	if (position.equals("center")) {
-    		
-    	}
-    	
-    	else if (position.equals("right")) {
-    		
-    	}
-    	
-    	else if (position.equals("cleft")) {
-    		
-    	}
-    	
-    	else if (position.equals("fleft")) {
-    		
-    	}
+    	addSequential(new RotatorOverObstacle(false));
+    	addSequential(new AutoDrive(0.6, 0.15, 4));
     }
 }

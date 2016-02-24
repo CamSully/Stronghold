@@ -33,13 +33,13 @@ public class RotatorToRamp extends Command {
     	}
     	
     	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() > 82.5) && ((RobotMap.rotatorEncoder.getDistance() < 87.5))) {
+    		if ((RobotMap.rotatorEncoder.getDistance() > 70) && ((RobotMap.rotatorEncoder.getDistance() < 75))) {
     			done = true;
     		}
-    		else if (RobotMap.rotatorEncoder.getDistance() < 82.5) {
+    		else if (RobotMap.rotatorEncoder.getDistance() < 75) {
     			Robot.shooter.Rotate(1);
     		}
-    		else {     // Rotator is above threshold (over 87.5).
+    		else {     // Rotator is above threshold (over 80).
     			Robot.shooter.Rotate(-0.75);
     		}
     	}
@@ -58,5 +58,6 @@ public class RotatorToRamp extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
     }
 }

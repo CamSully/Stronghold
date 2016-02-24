@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_OverCheval extends CommandGroup {
+public class A_Over_Cheval extends CommandGroup {
     
-    public  A_OverCheval() {
+    public  A_Over_Cheval() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
