@@ -28,6 +28,7 @@ public class EmergencyStopRotator extends CommandGroup {
         // arm.
     	requires(Robot.shooter);
     	
+    	// Run all rotator hotkey commands with the 'true' parameter, which will activate their emergency modes.
     	addSequential(new RotatorOverObstacle(true));
     	addSequential(new RotatorToLine(true));
     	addSequential(new RotatorToRamp(true));

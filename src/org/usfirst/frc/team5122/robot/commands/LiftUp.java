@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5122.robot.*;
 
 /**
- *
+ * LiftUp is slightly more complex than LiftDown, in that it stops the motors if the lift hits the top limit switch.
  */
 public class LiftUp extends Command {
 

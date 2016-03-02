@@ -42,14 +42,17 @@ public class Drivetrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    // Drive based on joystick input.
     public void jsDrive(Joystick js) {
     	driveBase.arcadeDrive(-js.getRawAxis(1), -js.getRawAxis(0));	//(Forward/Back, Left/Right)
     }
     
+    // Drive with parameters for speed and turn.
     public void drive(double magnitude, double angle) {
     	driveBase.arcadeDrive(magnitude, angle);
     }
     
+    // Turn the drivetrain off.
     public void stopDrivetrain() {
     	driveBase.arcadeDrive(0, 0);
     }

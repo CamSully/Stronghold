@@ -60,6 +60,7 @@ public class OI {
     public static JoystickButton jS7;
     public static JoystickButton jS8;
     public static JoystickButton jS9;
+    
     public static Joystick driveJoystick;
     public static Joystick rotateJoystick;
 
@@ -71,27 +72,35 @@ public class OI {
         driveJoystick = new Joystick(1);
         rotateJoystick = new Joystick(0);
         
+        // Intake
         jS1 = new JoystickButton(driveJoystick, 2);
         jS1.whileHeld(new Intake());
         
+        // Fire ball
         jS2 = new JoystickButton(driveJoystick, 1);
         jS2.whenPressed(new PushFireBall());
         
+        // Lift up
         jS3 = new JoystickButton(rotateJoystick, 4);
         jS3.whileHeld(new LiftUp());
         
+        // Lift down
         jS4 = new JoystickButton(rotateJoystick, 5);
         jS4.whileHeld(new LiftDown());
         
+        // Rotate hotkey- Move the rotator to its correct position for the ramp.
         jS5 = new JoystickButton(rotateJoystick, 3);
         jS5.whenPressed(new RotatorToRamp(false));
         
+        // Toggle tomahawks
         jS6 = new JoystickButton(driveJoystick, 3);
         jS6.whenPressed(new ToggleTomahawks());
         
+        // Rotate hotkey- Move the rotator to its correct position for the alignment line.
         jS7 = new JoystickButton(rotateJoystick, 2);
         jS7.whenPressed(new RotatorToLine(false));
         
+        // Emergency function to stop the rotator
         jS8 = new JoystickButton(rotateJoystick, 7);
         jS8.whenPressed(new EmergencyStopRotator());
         

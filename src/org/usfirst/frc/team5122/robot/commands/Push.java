@@ -5,7 +5,8 @@ import org.usfirst.frc.team5122.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Push is run in conjunction with FireBall.
+ * Push is used to push the ball into the wheels once they are spinning quickly.
  */
 public class Push extends Command {
 	

@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser autoModeChooser;
 
+    // Unused: vision beta.
     NetworkTable table;
     
     public static OI oi;
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
     
     public Robot(){
     	super();
+    	// Unused: vision beta.
     	table = NetworkTable.getTable("GRIP/VisionContours");
     }
 
@@ -67,6 +69,7 @@ public class Robot extends IterativeRobot {
 
         // instantiate the command used for the autonomous period
         autoModeChooser = new SendableChooser();
+        // Put all autonomous programs for different positions on the sendable chooser.
         autoModeChooser.addObject("Cheval Center", new A_Cheval("center"));
         autoModeChooser.addObject("Cheval Right", new A_Cheval("right"));
         autoModeChooser.addObject("Cheval Close Left", new A_Cheval("cleft"));
@@ -125,6 +128,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        // Put a bunch of diagnostic info on the SmartDashboard (in this loop it will be continuously updated).
         SmartDashboard.putBoolean("Lift on Top Limit", lift.getTopLimit());
         SmartDashboard.putNumber("Rotator Encoder Rotations", shooter.getDistance());
         SmartDashboard.putBoolean("Rotator on Bottom Limit", shooter.getBottomLimit());

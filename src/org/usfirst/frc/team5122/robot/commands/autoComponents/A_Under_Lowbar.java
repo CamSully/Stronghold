@@ -4,7 +4,6 @@ import org.usfirst.frc.team5122.robot.Robot;
 import org.usfirst.frc.team5122.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -32,10 +31,15 @@ public class A_Under_Lowbar extends CommandGroup {
     	requires(Robot.shooter);
     	requires(Robot.lift);
     	
+    	// Put the tomahawks down.
     	addSequential(new ToggleTomahawks());
+    	// Put the lift all the way up.
     	addSequential(new LiftUp());
+    	// Pull the rotator up a bit so it can go over an obstacle.
     	addSequential(new RotatorOverObstacle(false));
+    	// Wait for 1 second (nothing happening).
     	addSequential(new AutoDrive(0, 0, 1));
+    	// Drive backwards at 0.6 power, 0 angle, for 4 seconds.
     	addSequential(new AutoDrive(-0.6, 0, 4));
     }
 }

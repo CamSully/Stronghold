@@ -5,7 +5,7 @@ import org.usfirst.frc.team5122.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * LiftDown is a simple command that purely runs methods from the Lift subsystem.
  */
 public class LiftDown extends Command {
 

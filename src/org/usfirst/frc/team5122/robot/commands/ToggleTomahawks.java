@@ -5,7 +5,7 @@ import org.usfirst.frc.team5122.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Toggle tomahawks is a simple command that changes the position of the tomahawks once, then ends.
  */
 public class ToggleTomahawks extends Command {
 
@@ -24,6 +24,7 @@ public class ToggleTomahawks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	// Toggle the tomahawks once, then end execution (so that they don't toggle infinitely).
     	Robot.lift.toggleTomahawks();
     	done = true;
     }

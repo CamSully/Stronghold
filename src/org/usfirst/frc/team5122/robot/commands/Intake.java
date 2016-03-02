@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5122.robot.Robot;
 
 /**
- *
+ * Intake is a simple command to take in the ball.
+ * When the js button is held, the motors will intake.
+ * When the js button is released, the motors will shut off.
  */
 public class  Intake extends Command {
 	

@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5122.robot.OI;
 import org.usfirst.frc.team5122.robot.Robot;
 /**
- *
+ * FireBall is a component command that is used to either turn on the shooters for 0.5s or a specified time.
+ * Note that this command never runs on its own, it is always used in conjunction with the pusher.
  */
 public class  FireBall extends Command {
 	
+	// DEFAULT CONSTRUCTOR- TURN ON MOTORS FOR 0.5s
     public FireBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -29,7 +31,8 @@ public class  FireBall extends Command {
         setTimeout(.5);
     }
     
-    // For use when motors must be turned on for more than 0.5s (see PushFireBall()).
+    
+    // SECONDARY CONSTRUCTOR- TURN ON MOTORS FOR SPECIFIED TIME.
     public FireBall(double timeout) {
     	
     	requires (Robot.shooter);
@@ -53,6 +56,7 @@ public class  FireBall extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	// If intake is not pressed, shut off motors (probably delete the 'if' statement later, not really needed).
     	if (!OI.jS1.get()) {
     		Robot.shooter.intakeOff();
     	}
@@ -61,7 +65,7 @@ public class  FireBall extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
+    	// Don't do anything when interrupted because it causes motors to destroy themselves.
     }
     
 }

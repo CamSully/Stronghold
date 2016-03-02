@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5122.robot.*;
 
 /**
- *
+ * Rotate moves the rotator based on the y axis of the rotator joystick.
  */
 public class  Rotate extends Command {
 
@@ -47,7 +47,6 @@ public class  Rotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	// position = RobotMap.rotatorEncoder.getDistance();
     	Robot.shooter.stopRotation();
     }
 
