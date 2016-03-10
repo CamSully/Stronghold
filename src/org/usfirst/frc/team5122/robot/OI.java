@@ -60,6 +60,7 @@ public class OI {
     public static JoystickButton jS7;
     public static JoystickButton jS8;
     public static JoystickButton jS9;
+    public static JoystickButton jS10;
     
     public static Joystick driveJoystick;
     public static Joystick rotateJoystick;
@@ -82,11 +83,15 @@ public class OI {
         
         // Lift up
         jS3 = new JoystickButton(rotateJoystick, 4);
-        jS3.whileHeld(new LiftUp());
+        jS3.whenPressed(new LiftPushUp());
+        //spool out line
+        jS9 = new JoystickButton(rotateJoystick, 6);
+        jS9.whileHeld(new SpoolOutRope());
         
         // Lift down
         jS4 = new JoystickButton(rotateJoystick, 5);
-        jS4.whileHeld(new LiftDown());
+        jS4.whenPressed(new LiftPushDown());
+        jS4.whileHeld(new SpoolInRope());
         
         // Rotate hotkey- Move the rotator to its correct position for the ramp.
         jS5 = new JoystickButton(rotateJoystick, 3);
@@ -95,6 +100,8 @@ public class OI {
         // Toggle tomahawks
         jS6 = new JoystickButton(driveJoystick, 3);
         jS6.whenPressed(new ToggleTomahawks());
+        jS10 = new JoystickButton(rotateJoystick, 1);
+        jS10.whenPressed(new ToggleTomahawks());
         
         // Rotate hotkey- Move the rotator to its correct position for the alignment line.
         jS7 = new JoystickButton(rotateJoystick, 2);

@@ -1,17 +1,15 @@
 package org.usfirst.frc.team5122.robot.commands;
 
+import org.usfirst.frc.team5122.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team5122.robot.*;
-
 /**
- * LiftUp is slightly more complex than LiftDown, in that it stops the motors if the lift hits the top limit switch.
+ * LiftDown is a simple command that purely runs methods from the Lift subsystem.
  */
-public class LiftUp extends Command {
+public class SpoolInRope extends Command {
 
-	boolean done;
-	
-    public LiftUp() {
+    public SpoolInRope() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
@@ -20,27 +18,22 @@ public class LiftUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	done = false;
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!RobotMap.liftTopLimit.get()) {     // Limit is pressed.
-    		done = true;
-    	}
-    	else {
-    		Robot.lift.lifterUp();
-    	}
+    	Robot.lift.pullInRope();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return done;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.lift.stopLift();
+    	Robot.lift.stopLiftMotor();
     }
 
     // Called when another command which requires one or more of the same
@@ -49,10 +42,10 @@ public class LiftUp extends Command {
     	end();
     }
     
-    // Runs when button is released.
+    // Cancel runs when button is released.
     public void cancel() {
     	super.cancel();
-    	// Turn lift off.
+    	// Turn lift off when button is released.
     	end();
     }
 }

@@ -35,6 +35,7 @@ public class RobotMap {
     public static SpeedController shooterRightShooter;
     
     public static SpeedController liftLifter;
+    public static DoubleSolenoid liftSolenoid;
     
     public static DigitalInput rotatorBottomLimit;
     public static DigitalInput rotatorTopLimit;
@@ -78,9 +79,11 @@ public class RobotMap {
         shooterRotator = new Victor(0);
         LiveWindow.addActuator("Shooter", "RightRotator", (Victor) shooterRotator);
         
-        // LIFTER
+        // LIFT
         liftLifter = new Talon(5);
         LiveWindow.addActuator("Lift", "Lifter", (Talon) liftLifter);
+        liftSolenoid = new DoubleSolenoid(6,7);
+        LiveWindow.addActuator("Lift", "Lifter", liftSolenoid);
         
         // ROTATOR LIMIT
         rotatorBottomLimit = new DigitalInput(0);

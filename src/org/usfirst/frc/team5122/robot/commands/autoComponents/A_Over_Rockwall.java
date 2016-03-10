@@ -31,6 +31,6 @@ public class A_Over_Rockwall extends CommandGroup {
     	requires(Robot.shooter);
     	
     	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.7, 0, 4));
+    	addSequential(new AutoDrive(0.9, 0, 5));
     }
 }

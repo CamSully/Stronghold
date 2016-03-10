@@ -19,8 +19,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5122.robot.commands.autoModes.*;
-import org.usfirst.frc.team5122.robot.commands.autoModes.A_Lowbar;
+import org.usfirst.frc.team5122.robot.commands.autoComponents.*;
 import org.usfirst.frc.team5122.robot.subsystems.*;
 
 /**
@@ -70,21 +69,16 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autoModeChooser = new SendableChooser();
         // Put all autonomous programs for different positions on the sendable chooser.
-        autoModeChooser.addObject("Cheval Center", new A_Cheval("center"));
-        autoModeChooser.addObject("Cheval Right", new A_Cheval("right"));
-        autoModeChooser.addObject("Cheval Close Left", new A_Cheval("cleft"));
-        autoModeChooser.addObject("Cheval Far Left", new A_Cheval("fleft"));
-        
-        autoModeChooser.addObject("Rough Terrain Center", new A_RoughTerrain("center"));
-        autoModeChooser.addObject("Rough Terrain right", new A_RoughTerrain("right"));
-        autoModeChooser.addObject("Rough Terrain Close Left", new A_RoughTerrain("cleft"));
-        autoModeChooser.addObject("Rough Terrain Far Left", new A_RoughTerrain("fleft"));
-        
-        autoModeChooser.addObject("Low Bar", new A_Lowbar());
+        autoModeChooser.addObject("Cheval", new A_Over_Cheval());
+        autoModeChooser.addObject("Portcullis", new A_Over_Portcullis());
+        autoModeChooser.addObject("Ramparts", new A_Over_Ramparts());
+        autoModeChooser.addObject("Rockwall", new A_Over_Rockwall());
+        autoModeChooser.addObject("Rough Terrain", new A_Over_RoughTerrain());
+        autoModeChooser.addObject("Lowbar", new A_Under_Lowbar());
         
         SmartDashboard.putData("Auto Mode Chooser", autoModeChooser);
         
-        
+        SmartDashboard.putData(Scheduler.getInstance());
         
     }
 

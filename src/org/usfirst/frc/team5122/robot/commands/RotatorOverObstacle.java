@@ -20,7 +20,7 @@ public class RotatorOverObstacle extends Command {
     	requires (Robot.shooter);
     	this.emergency = emergency;
     	// SAFETY MEASURE: ROTATOR SHOULD MOVE FOR LESS THAN 1 SECOND.
-    	setTimeout(1);
+    	setTimeout(0.70);
     }
 
     // Called just before this Command runs the every time
@@ -44,11 +44,11 @@ public class RotatorOverObstacle extends Command {
     	// If there isn't an emergency, drive the rotator.
     	else {
     		// If the rotator is in the proper position (~22.5), stop rotation.
-    		if ((RobotMap.rotatorEncoder.getDistance() > 20) && ((RobotMap.rotatorEncoder.getDistance() < 25))) {
+    		if ((RobotMap.rotatorEncoder.getDistance() < -20) && ((RobotMap.rotatorEncoder.getDistance() > -25))) {
     			done = true;
     		}
     		// If the rotator is below position, rotate up.
-    		else if (RobotMap.rotatorEncoder.getDistance() < 20) {
+    		else if (RobotMap.rotatorEncoder.getDistance() > -20) {
     			Robot.shooter.Rotate(1);
     		}
     		// If the rotator is above position, rotate down.

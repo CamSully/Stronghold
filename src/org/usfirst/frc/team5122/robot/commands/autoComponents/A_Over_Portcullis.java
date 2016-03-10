@@ -33,7 +33,7 @@ public class A_Over_Portcullis extends CommandGroup {
     	
     	addSequential(new RotatorOverObstacle(false));
     	addSequential(new ToggleTomahawks());
-    	addSequential(new AutoDrive(0.5, 0, 2));
+    	addSequential(new AutoDrive(0.6, 0, 2));
     	addParallel(new AutoDrive(0.6, 0, 4));
     	addSequential(new ToggleTomahawks());
     }

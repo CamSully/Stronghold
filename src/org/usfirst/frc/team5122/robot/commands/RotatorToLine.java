@@ -33,10 +33,10 @@ public class RotatorToLine extends Command {
     	}
     	
     	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() > 60) && ((RobotMap.rotatorEncoder.getDistance() < 65))) {
+    		if ((RobotMap.rotatorEncoder.getDistance() < -60) && ((RobotMap.rotatorEncoder.getDistance() > -65))) {
     			done = true;
     		}
-    		else if (RobotMap.rotatorEncoder.getDistance() < 60) {
+    		else if (RobotMap.rotatorEncoder.getDistance() > -60) {
     			Robot.shooter.Rotate(1);
     		}
     		else {     // If rotator is above threshold (over 65)

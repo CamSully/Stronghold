@@ -33,8 +33,6 @@ public class A_Under_Lowbar extends CommandGroup {
     	
     	// Put the tomahawks down.
     	addSequential(new ToggleTomahawks());
-    	// Put the lift all the way up.
-    	addSequential(new LiftUp());
     	// Pull the rotator up a bit so it can go over an obstacle.
     	addSequential(new RotatorOverObstacle(false));
     	// Wait for 1 second (nothing happening).

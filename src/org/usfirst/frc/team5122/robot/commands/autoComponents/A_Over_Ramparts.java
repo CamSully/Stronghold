@@ -31,6 +31,6 @@ public class A_Over_Ramparts extends CommandGroup {
     	requires(Robot.shooter);
     	
     	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.65, 0.15, 4));
+    	addSequential(new AutoDrive(0.85, 0.4, 5));
     }
 }

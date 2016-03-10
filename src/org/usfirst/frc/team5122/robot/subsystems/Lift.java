@@ -14,22 +14,29 @@ public class Lift extends Subsystem {
     // here. Call these from Commands.
 	
 	SpeedController lifter = RobotMap.liftLifter;
+	DoubleSolenoid liftSolenoid = RobotMap.liftSolenoid;
 	DigitalInput topLimit = RobotMap.liftTopLimit;
 	DoubleSolenoid tomahawks = RobotMap.tomahawksSolenoid;
 	
 	boolean tomahawksDown = false;
 	
-	public void lifterUp() {
-		if (topLimit.get()) {     // Limit not pressed.
-			lifter.set(0.4);
-		}
+	public void liftPushUp() {
+		liftSolenoid.set(DoubleSolenoid.Value.kForward);
+	}
+				
+	public void liftPushDown() {
+		liftSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-	public void lifterDown() {
-		lifter.set(-0.4);
+	public void deployRope () {
+		lifter.set(0.5);
 	}
 	
-	public void stopLift() {
+	public void pullInRope() {
+		lifter.set(-0.5);
+	}
+	
+	public void stopLiftMotor() {
 		lifter.set(0);
 	}
 	

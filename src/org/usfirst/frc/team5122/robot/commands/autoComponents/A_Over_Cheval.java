@@ -31,7 +31,7 @@ public class A_Over_Cheval extends CommandGroup {
     	requires(Robot.lift);
     	
     	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.5, 0, 1));     // Speed, turn, time
+    	addSequential(new AutoDrive(0.5, 0, 1.5));     // Speed, turn, time
     	addSequential(new ToggleTomahawks());
     	addSequential(new AutoDrive(0, 0, 1));
     	addSequential(new AutoDrive(0.8, 0, 2));
