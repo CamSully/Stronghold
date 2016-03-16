@@ -29,11 +29,11 @@ public class Lift extends Subsystem {
 	}
 	
 	public void deployRope () {
-		lifter.set(0.5);
+		lifter.set(1);
 	}
 	
 	public void pullInRope() {
-		lifter.set(-0.5);
+		lifter.set(-1);
 	}
 	
 	public void stopLiftMotor() {

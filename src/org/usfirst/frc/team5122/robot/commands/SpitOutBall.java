@@ -1,16 +1,15 @@
-package org.usfirst.frc.team5122.robot.commands.autoComponents;
+package org.usfirst.frc.team5122.robot.commands;
 
 import org.usfirst.frc.team5122.robot.Robot;
-import org.usfirst.frc.team5122.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * PushFireBall is the command used to fire the ball.
  */
-public class A_Over_Ramparts extends CommandGroup {
+public class SpitOutBall extends CommandGroup {
     
-    public  A_Over_Ramparts() {
+    public  SpitOutBall() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -27,10 +26,16 @@ public class A_Over_Ramparts extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	requires(Robot.drivetrain);
+    	
     	requires(Robot.shooter);
     	
-    	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.85, 0.4, 3));
+    	// Turn on the motors for 1.25s to get them up to speed.
+    	addSequential(new SpitBall(1.25));
+    	// Keep the motors on while pushing the ball into them.
+    	addParallel(new SpitBall());
+    	addParallel(new Push());
+    	// Keep the motors on to ensure that the ball is passed through with them at full speed.
+    	addSequential(new SpitBall(1));
+    	
     }
 }

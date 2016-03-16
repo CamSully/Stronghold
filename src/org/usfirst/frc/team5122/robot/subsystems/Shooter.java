@@ -65,6 +65,11 @@ public class Shooter extends Subsystem {
     	}
     }
     
+    public void spit() {
+    	leftShooter.set(0.3);
+    	rightShooter.set(-0.3);
+    }
+    
     // ROTATOR METHODS
     
     public void rotate(Joystick js) {
@@ -152,6 +157,10 @@ public class Shooter extends Subsystem {
     
     public boolean getBottomLimit() {
     	return rotatorBottomLimit.get();
+    }
+    
+    public boolean getTopLimit() {
+    	return rotatorTopLimit.get();
     }
     
     public void resetEncoder() {
