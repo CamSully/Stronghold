@@ -107,18 +107,19 @@ public class OI {
         
         // Rotate hotkey- Move the rotator to its correct position for the alignment line.
         jS7 = new JoystickButton(rotateJoystick, 4);
-        jS7.whenPressed(new RotatorToLine(false));
+        jS7.whenPressed(new ToggleRelay());
         
         // Emergency function to stop the rotator
         jS8 = new JoystickButton(rotateJoystick, 7);
         jS8.whenPressed(new EmergencyStopRotator());
         
+        // Hotkey
         jS11 = new JoystickButton(rotateJoystick, 10);
         jS11.whenPressed(new RotatorOverObstacle(false));
         
+        // Lowgoal/pass
         jS12 = new JoystickButton(driveJoystick, 4);
-        jS12.whenPressed(new SpitOutBall());
-        
+        jS12.whenPressed(new SpinUpShooter());
         
         SmartDashboard.putData("Auto Over Cheval", new A_Over_Cheval());
         SmartDashboard.putData("Auto Over Rough Terrain", new A_Over_RoughTerrain());

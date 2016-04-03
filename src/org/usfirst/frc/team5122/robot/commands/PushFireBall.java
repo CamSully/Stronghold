@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * PushFireBall is the command used to fire the ball.
  */
 public class PushFireBall extends CommandGroup {
-    
+	
     public  PushFireBall() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -30,12 +30,11 @@ public class PushFireBall extends CommandGroup {
     	requires(Robot.shooter);
     	
     	// Turn on the motors for 1.25s to get them up to speed.
-    	addSequential(new FireBall(1.25));
+    	// addSequential(new FireBall(1.25));
     	// Keep the motors on while pushing the ball into them.
     	addParallel(new FireBall());
     	addParallel(new Push());
     	// Keep the motors on to ensure that the ball is passed through with them at full speed.
     	addSequential(new FireBall(1));
-    	
     }
 }

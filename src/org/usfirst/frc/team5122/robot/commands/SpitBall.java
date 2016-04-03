@@ -12,8 +12,6 @@
 package org.usfirst.frc.team5122.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team5122.robot.OI;
 import org.usfirst.frc.team5122.robot.Robot;
 /**
  * FireBall is a component command that is used to either turn on the shooters for 0.5s or a specified time.
