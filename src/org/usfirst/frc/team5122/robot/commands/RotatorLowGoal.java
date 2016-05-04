@@ -8,16 +8,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RotatorToRamp extends Command {
+public class RotatorLowGoal extends Command {
 	
 	boolean done;
 	boolean emergency;
 	
-    public RotatorToRamp(boolean emergency) {
+    public RotatorLowGoal(boolean emergency) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires (Robot.shooter);
     	this.emergency = emergency;
+    	
+    	setTimeout(0.5);
     }
 
     // Called just before this Command runs the every time
@@ -32,11 +34,15 @@ public class RotatorToRamp extends Command {
     		done = true;
     	}
     	
+    	if (isTimedOut()) {
+    		done = true;
+    	}
+    	
     	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() < -70) && ((RobotMap.rotatorEncoder.getDistance() > -75))) {
+    		if ((RobotMap.rotatorEncoder.getDistance() < -3) && ((RobotMap.rotatorEncoder.getDistance() > -6))) {
     			done = true;
     		}
-    		else if (RobotMap.rotatorEncoder.getDistance() > -70) {
+    		else if (RobotMap.rotatorEncoder.getDistance() > -3) {
     			Robot.shooter.Rotate(1);
     		}
     		else {     // Rotator is above threshold (over 75).

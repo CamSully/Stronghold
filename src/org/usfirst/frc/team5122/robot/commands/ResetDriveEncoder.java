@@ -8,41 +8,25 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RotatorToLine extends Command {
+public class ResetDriveEncoder extends Command {
+
+	boolean done = false;
 	
-	boolean done;
-	boolean emergency;
-	
-    public RotatorToLine(boolean emergency) {
+    public ResetDriveEncoder() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires (Robot.shooter);
-    	this.emergency = emergency;
+    	requires(Robot.drivetrain);
     }
 
-    // Called just before this Command runs the every time
+    // Called just before this Command runs the first time
     protected void initialize() {
-    	 done = false;
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if (emergency) {
-    		done = true;
-    	}
-    	
-    	else {
-    		if ((RobotMap.rotatorEncoder.getDistance() < -60) && ((RobotMap.rotatorEncoder.getDistance() > -65))) {
-    			done = true;
-    		}
-    		else if (RobotMap.rotatorEncoder.getDistance() > -60) {
-    			Robot.shooter.Rotate(1);
-    		}
-    		else {     // If rotator is above threshold (over 65)
-    			Robot.shooter.Rotate(-0.75);
-    		}
-    	}
+    	RobotMap.drivetrainLeftEncoder.reset();
+    	done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -52,7 +36,7 @@ public class RotatorToLine extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stopRotation();
+    	
     }
 
     // Called when another command which requires one or more of the same

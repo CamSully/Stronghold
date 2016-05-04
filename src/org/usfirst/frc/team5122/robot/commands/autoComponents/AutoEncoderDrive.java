@@ -12,11 +12,9 @@ public class AutoEncoderDrive extends Command {
 	double speed;
 	double angle;
 	double leftDistance;
-	double rightDistance;
 	boolean done = false;
-	double error = 5;
 	
-    public AutoEncoderDrive(double magnitude, double turn, double leftRotations, double rightRotations) {
+    public AutoEncoderDrive(double magnitude, double turn, double leftRotations) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
@@ -24,7 +22,6 @@ public class AutoEncoderDrive extends Command {
     	speed = magnitude;
     	angle = turn;
     	leftDistance = leftRotations;
-    	rightDistance = rightRotations;
     }
 
     // Called just before this Command runs the first time
@@ -35,25 +32,21 @@ public class AutoEncoderDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if (Robot.drivetrain.getLeftDistance() > (leftDistance - error) && Robot.drivetrain.getLeftDistance() < (leftDistance + error)) {
-    		if (Robot.drivetrain.getRightDistance() > (rightDistance - error) && Robot.drivetrain.getRightDistance() < (rightDistance + error)) {
+    	if (leftDistance > 0)
+    		if (Robot.drivetrain.getLeftDistance() >= leftDistance) {
         		done = true;
-        	}
+    		}    	
     		else {
-    			Robot.drivetrain.drive(speed, -0.25);
-    		} 
-    	}
-    	else if (Robot.drivetrain.getRightDistance() > (rightDistance - error) && Robot.drivetrain.getRightDistance() < (rightDistance + error)) {
-    		if (Robot.drivetrain.getLeftDistance() > (leftDistance - error) && Robot.drivetrain.getLeftDistance() < (leftDistance + error)) {
-    			done = true;
+    			Robot.drivetrain.drive(speed, angle);
     		}
-    		else {
-    			Robot.drivetrain.drive(speed, 0.25);
-    		}
-    	}
     	
-    	else {
-    		Robot.drivetrain.drive(speed, angle);
+    	else { //If distance is negative
+    		if (Robot.drivetrain.getLeftDistance() <= leftDistance) {
+        		done = true;
+    		}    	
+    		else {
+    			Robot.drivetrain.drive(speed, angle);
+    		}
     	}
     }
 

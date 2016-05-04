@@ -97,7 +97,7 @@ public class OI {
         
         // Rotate hotkey- Move the rotator to its correct position for the ramp.
         jS5 = new JoystickButton(rotateJoystick, 5);
-        jS5.whenPressed(new RotatorToRamp(false));
+        // NO FUNCTION
         
         // Toggle tomahawks
         jS6 = new JoystickButton(driveJoystick, 3);
@@ -121,12 +121,7 @@ public class OI {
         jS12 = new JoystickButton(driveJoystick, 4);
         jS12.whenPressed(new SpinUpShooter());
         
-        SmartDashboard.putData("Auto Over Cheval", new A_Over_Cheval());
-        SmartDashboard.putData("Auto Over Rough Terrain", new A_Over_RoughTerrain());
-        SmartDashboard.putData("Auto Under Lowbar", new A_Under_Lowbar());
-        SmartDashboard.putData("Auto Over Portcullis", new A_Over_Portcullis());
-        SmartDashboard.putData("Auto Over Ramparts", new A_Over_Ramparts());
-        SmartDashboard.putData("Auto Over Rock Wall", new A_Over_Rockwall());
+        SmartDashboard.putData("Reset Encoder", new ResetDriveEncoder());
         
     }
     

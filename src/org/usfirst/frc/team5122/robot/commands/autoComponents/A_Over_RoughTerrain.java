@@ -30,6 +30,7 @@ public class A_Over_RoughTerrain extends CommandGroup {
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
     	
+    	addSequential(new ToggleRelay());
     	addSequential(new RotatorOverObstacle(false));
     	addSequential(new AutoDrive(0.8, 0, 3));
     }

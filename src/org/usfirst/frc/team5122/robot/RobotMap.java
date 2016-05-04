@@ -128,11 +128,11 @@ public class RobotMap {
         drivetrainLeftEncoder.setReverseDirection(false);
         
         // RIGHT DRIVETRAIN ENCODER
-        drivetrainRightEncoder = new Encoder(7,8);
-        LiveWindow.addActuator("Drivetrain", "right encoder", drivetrainRightEncoder);
-        drivetrainRightEncoder.setDistancePerPulse(1);
-        drivetrainRightEncoder.setSamplesToAverage(5);
-        drivetrainRightEncoder.setReverseDirection(false);
+//        drivetrainRightEncoder = new Encoder(7,8);
+//        LiveWindow.addActuator("Drivetrain", "right encoder", drivetrainRightEncoder);
+//        drivetrainRightEncoder.setDistancePerPulse(1);
+//        drivetrainRightEncoder.setSamplesToAverage(5);
+//        drivetrainRightEncoder.setReverseDirection(false);
         
         // Flashlight Relay
         flashlightRelay = new Relay(0);

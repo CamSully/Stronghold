@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5122.robot.commands.autoComponents;
 
 import org.usfirst.frc.team5122.robot.Robot;
+import org.usfirst.frc.team5122.robot.RobotMap;
 import org.usfirst.frc.team5122.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -8,9 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_Over_Ramparts extends CommandGroup {
+public class A_Nothing extends CommandGroup {
     
-    public  A_Over_Ramparts() {
+    public  A_Nothing() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -28,11 +29,7 @@ public class A_Over_Ramparts extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	requires(Robot.drivetrain);
-    	requires(Robot.shooter);
     	
-    	addSequential(new ToggleRelay());
-    	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(-0.80, 0, 0.5));
-    	addSequential(new AutoDrive(-0.80, 0.35, 1.5));
+    	addSequential(new AutoDrive(0, 0, 3));
     }
 }

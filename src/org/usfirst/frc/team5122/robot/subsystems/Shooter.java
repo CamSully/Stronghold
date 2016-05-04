@@ -79,6 +79,10 @@ public class Shooter extends Subsystem {
     	}
     }
     
+    public boolean getFiring() {
+    	return firing;
+    }
+    
     public void spit() {
     	leftShooter.set(0.3);
     	rightShooter.set(-0.3);

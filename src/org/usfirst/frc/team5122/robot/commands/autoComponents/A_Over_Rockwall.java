@@ -30,6 +30,7 @@ public class A_Over_Rockwall extends CommandGroup {
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
     	
+    	addSequential(new ToggleRelay());
     	addSequential(new RotatorOverObstacle(false));
     	addSequential(new AutoDrive(0.9, 0, 3));
     }

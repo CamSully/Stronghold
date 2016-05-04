@@ -30,7 +30,6 @@ public class EmergencyStopRotator extends CommandGroup {
     	
     	// Run all rotator hotkey commands with the 'true' parameter, which will activate their emergency modes.
     	addSequential(new RotatorOverObstacle(true));
-    	addSequential(new RotatorToLine(true));
-    	addSequential(new RotatorToRamp(true));
+    	addSequential(new RotatorLowGoal(true));
     }
 }

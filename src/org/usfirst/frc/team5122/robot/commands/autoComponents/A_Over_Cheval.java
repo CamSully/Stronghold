@@ -29,7 +29,9 @@ public class A_Over_Cheval extends CommandGroup {
         // arm.
     	requires(Robot.drivetrain);
     	requires(Robot.lift);
+    	requires(Robot.shooter);
     	
+    	addSequential(new ToggleRelay());
     	addSequential(new RotatorOverObstacle(false));
     	addSequential(new AutoDrive(0.5, 0, 1.5));     // Speed, turn, time
     	addSequential(new ToggleTomahawks());
