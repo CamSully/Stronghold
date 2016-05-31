@@ -18,7 +18,7 @@ public class Lift extends Subsystem {
 	DigitalInput topLimit = RobotMap.liftTopLimit;
 	DoubleSolenoid tomahawks = RobotMap.tomahawksSolenoid;
 	
-	boolean tomahawksDown = false;
+	private boolean tomahawksDown = false;
 	
 	public void liftPushUp() {
 		liftSolenoid.set(DoubleSolenoid.Value.kForward);
@@ -71,5 +71,6 @@ public class Lift extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
 }
 

@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
+import org.usfirst.frc.team5122.robot.commands.Record;
 import org.usfirst.frc.team5122.robot.commands.autoComponents.*;
 import org.usfirst.frc.team5122.robot.subsystems.*;
 
@@ -76,7 +77,8 @@ public class Robot extends IterativeRobot {
         autoModeChooser.addObject("Cheval", new A_Over_Cheval());
         autoModeChooser.addObject("Portcullis", new A_Over_Portcullis());
         autoModeChooser.addDefault("Ramparts", new A_Over_Ramparts());
-        autoModeChooser.addObject("Rockwall/Moat", new A_Over_Rockwall());
+        autoModeChooser.addObject("Rockwall", new A_Over_Rockwall());
+        autoModeChooser.addObject("Moat", new A_Over_Moat());
         autoModeChooser.addObject("Rough Terrain", new A_Over_RoughTerrain());
         autoModeChooser.addObject("Lowbar", new A_Under_Lowbar());
         autoModeChooser.addObject("Nothing", new A_Nothing());

@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_Over_Rockwall extends CommandGroup {
+public class A_Over_RecordedLowBar extends CommandGroup {
     
-    public  A_Over_Rockwall() {
+	private int count;
+	
+    public  A_Over_RecordedLowBar() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,9 +31,9 @@ public class A_Over_Rockwall extends CommandGroup {
         // arm.
     	requires(Robot.drivetrain);
     	requires(Robot.shooter);
+    	requires(Robot.lift);
     	
-    	addSequential(new ToggleRelay());
-    	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.9, 0, 2.5));
+    	addSequential(new ToggleTomahawks());
+    	}
     }
-}
+// }

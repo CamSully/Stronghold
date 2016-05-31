@@ -47,6 +47,10 @@ public class Drivetrain extends Subsystem {
     	driveBase.arcadeDrive(-js.getRawAxis(1), -js.getRawAxis(0));	//(Forward/Back, Left/Right)
     }
     
+    public void AutoJSDrive(double yAxis, double xAxis) {
+    	driveBase.arcadeDrive(-yAxis, -xAxis);
+    }
+    
     // Drive with parameters for speed and turn.
     public void drive(double magnitude, double angle) {
     	driveBase.arcadeDrive(magnitude, angle);

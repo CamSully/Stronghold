@@ -12,7 +12,6 @@
 package org.usfirst.frc.team5122.robot;
 
 import org.usfirst.frc.team5122.robot.commands.*;
-import org.usfirst.frc.team5122.robot.commands.autoComponents.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
@@ -115,7 +114,7 @@ public class OI {
         
         // Hotkey
         jS11 = new JoystickButton(rotateJoystick, 10);
-        jS11.whenPressed(new RotatorOverObstacle(false));
+        jS11.toggleWhenActive(new Record());
         
         // Lowgoal/pass
         jS12 = new JoystickButton(driveJoystick, 4);
@@ -125,9 +124,16 @@ public class OI {
         
     }
     
-    public Joystick getDriveJS() {
-        return driveJoystick;
+    public static double getDriveX() {
+        return driveJoystick.getX();
+    }
+    
+    public static double getDriveY() {
+        return driveJoystick.getY();
+    }
+    
+    public static double getRotateY() {
+    	return rotateJoystick.getY();
     }
     
 }
-

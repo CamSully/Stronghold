@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class A_Over_Rockwall extends CommandGroup {
+public class A_Over_Moat extends CommandGroup {
     
-    public  A_Over_Rockwall() {
+    public  A_Over_Moat() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -32,6 +32,6 @@ public class A_Over_Rockwall extends CommandGroup {
     	
     	addSequential(new ToggleRelay());
     	addSequential(new RotatorOverObstacle(false));
-    	addSequential(new AutoDrive(0.9, 0, 2.5));
+    	addSequential(new AutoDrive(0.9, 0, 3.25));
     }
 }
